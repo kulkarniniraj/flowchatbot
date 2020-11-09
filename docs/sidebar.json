@@ -1,6 +1,7 @@
 {
   "flowchatbot": {
     "Overview": "/",
+    "Flow Chatbot library API": "multiprocess-bot.html",
     "Title": "scratchpad.html"
   }
 }
