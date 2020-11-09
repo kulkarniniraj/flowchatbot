@@ -12,6 +12,9 @@ import re
 
 # Cell
 def get_chained_data(data, *keys):
+    """Gets data from dict hierarchy with given keys
+    (none if any link is missing)
+    """
     d = data
     for key in keys:
         if key not in d:
@@ -20,6 +23,9 @@ def get_chained_data(data, *keys):
     return d
 
 def set_chained_data(data, *keys, val=0):
+    """
+    Sets data to dict hierarchy and creating links where necessary
+    """
     d = data
     for key in keys[:-1]:
         if key not in d:
@@ -30,6 +36,9 @@ def set_chained_data(data, *keys, val=0):
 
 # Cell
 def tryint(x):
+    """
+    Check if input can be parsed as int, return -1 otherwise
+    """
     try:
         return int(x)
     except:
@@ -38,11 +47,20 @@ def tryint(x):
 
 # Cell
 class CHAT_RET(enum.Enum):
+    """
+    Movement values from chat segment.
+    If return stay, bot should reask this question
+    If next, bot should move to next in link
+    """
     STAY = 0
     NEXT = 1
 
 # Cell
 class Pipe:
+    """
+    Base class for all flow element classes
+    Sets up key, None as next link and callbacks for question and answer call
+    """
     def __init__(self, on_question=None, on_answer=None):
         self.key = ''
         self.next = None
@@ -60,6 +78,10 @@ class Pipe:
 
 # Cell
 class Segment(Pipe):
+    """
+    Basic segment unit, asks one question and gives one answer
+    Stores response as it is in 'data' field
+    """
     def __init__(self, key, q, a, **kwargs):
         super().__init__(**kwargs)
         self.q = q
@@ -80,7 +102,15 @@ class Segment(Pipe):
 
 # Cell
 class ValidatedSegment(Segment):
+    """
+    Segment element with data validation facility
+    Constructor takes validation function as arg.
+    """
     def __init__(self, key, q, a, errmsg, valid_fn):
+        """
+        valid_fn is called with user response. If it returns true, data
+        is stored and bot moves forward, otherwise bot stays and shows error message
+        """
         super().__init__(key, q, a)
         self.err = errmsg
         self.valid_fn = valid_fn
@@ -94,7 +124,14 @@ class ValidatedSegment(Segment):
 
 # Cell
 class MultiChoiceSegment(Segment):
+    """
+    Element for asking question with multi choice answers.
+    Both response number and corresponding answer is stored in data
+    """
     def __init__(self, key, q, resp_lst, ans, **kwargs):
+        """
+        resp_lst is list of choices to be given. Numbered from 1 to n
+        """
         super().__init__(key, q, ans, **kwargs)
         self.resp_lst = resp_lst
 
@@ -110,12 +147,28 @@ class MultiChoiceSegment(Segment):
 
 # Cell
 class ComputeSegment(Segment):
+    """
+    Segment to do computation. Data of parent elememnt is passed to answer function
+    Should be inherited with overriden answer function to do actual computations
+    """
     def answer(self, resp, data):
+        """
+        data of parent is passed
+        """
         return super().answer(resp, data)
 
 # Cell
 class Composite(Pipe):
+    """
+    Composite element, can have any other element including composite as children.
+    All children form linked list and traversed sequentially while this element
+    will return STAY
+    When end of linked list is reached, element returns NEXT
+    """
     def __init__(self, key, *args):
+        """
+        args correspond to all children elements
+        """
         super().__init__()
         for i in range(len(args) - 1):
             args[i].next = args[i+1]
@@ -194,6 +247,10 @@ class Composite(Pipe):
 
 # Cell
 class LoopComposite(Composite):
+    """
+    Composite element with ability to start from begin once end is reached.
+    Should have a Skip element before to break loop
+    """
     def move(self, cur, cmd, data):
         if cmd == CHAT_RET.NEXT:
             nxt = cur.next
@@ -208,6 +265,10 @@ class LoopComposite(Composite):
 
 # Cell
 class TextAdapter(Pipe):
+    """
+    Text based adapter to invoke root element on user reponse.
+    A similar adapter is needed for HTML or other bots
+    """
     def __init__(self, root):
         super().__init__()
         self.root = root
@@ -228,7 +289,16 @@ class TextAdapter(Pipe):
 
 # Cell
 class Splitter(Pipe):
+    """
+    Splitter element to branch flow based on some condition.
+    """
     def __init__(self, key, *branches, decider_fn=lambda _: 0, default = 0):
+        """
+        branches are all possible branch elements (could be composites)
+        decider_fn is passes data of parent and should return branch index
+        (between 0 to n-1)
+        default index is used if invalid index is returned by decider_fn
+        """
         super().__init__()
         self.key = key
         self.branches = branches
@@ -240,9 +310,9 @@ class Splitter(Pipe):
         self.decider_fn = decider_fn
 
     def decide(self, data):
-        '''
+        """
         Based on parent level data decide branch and return branch key
-        '''
+        """
         val = self.decider_fn(data)
         print(f'decider {self.key} {val}')
         if val >= len(self.branches):
@@ -251,9 +321,9 @@ class Splitter(Pipe):
         return self.branches[val].key
 
     def question(self, data):
-        '''
+        """
         Parent data for splitter
-        '''
+        """
         print(f'splitter question data {data}')
         pos = self.decide(data)
         set_chained_data(data, self.key, 'pos', val = pos)
@@ -287,13 +357,21 @@ class Splitter(Pipe):
 
 # Cell
 class SkipSplitter(Splitter):
+    """
+    A branch is taken on condition otherwise skips the branch
+    (name taken from skipconnection in resnets)
+    """
     def __init__(self, key, branch, decider_fn=lambda _: 0, default = 0):
+        """
+        Single branch should be passed
+        if decide_fn returns 1, branch will be taken otherwise skipped
+        """
         super().__init__(key, branch, decider_fn=decider_fn, default=default)
 
     def decide(self, data):
-        '''
+        """
         Based on parent level data decide if branch to be taken
-        '''
+        """
         val = self.decider_fn(data)
         return val
 
@@ -319,9 +397,9 @@ class SkipSplitter(Splitter):
         return data[self.key][key]
 
     def question(self, data):
-        '''
+        """
         Parent data for splitter
-        '''
+        """
         print(f'skip question data {data}')
         if self.decide(data) == 1:
             # take branch
