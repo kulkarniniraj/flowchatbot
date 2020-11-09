@@ -6,7 +6,7 @@ This file will become your README and also the index of your documentation.
 
 ## Install
 
-`pip install your_project_name`
+Clone this repo and copy flowchatbot folder in your source folder
 
 ## How to use
 
