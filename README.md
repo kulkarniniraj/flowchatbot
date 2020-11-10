@@ -81,14 +81,27 @@ bot = TextAdapter(
                 Segment('key2', 'Loop again?', 'Hello World!')
                            ))
 bot.r.flushall() # clear all old sessions
+```
 
+
+
+
+    True
+
+
+
+```python
 print(bot.respond('hi', 0)) # 0 is session id, used as key in redis
-
-print(bot.respond('hello', 0))
 ```
 
     Hello World!
     Loop again?
+
+
+```python
+print(bot.respond('hello', 0))
+```
+
     Hello World!
     Loop again?
 
@@ -105,19 +118,43 @@ bot = TextAdapter(
                   Segment('key5', 'Your email?', 'got it'),
                            ))
 bot.r.flushall() # clear all old sessions
+```
 
+
+
+
+    True
+
+
+
+```python
 print(bot.respond('hi', 0))
-print(bot.respond('Test123', 0))
-print(bot.respond('12312313', 0))
-print(bot.respond('a@b.c', 0))
 ```
 
     Welcome to QnA bot
     Your name?
+
+
+```python
+print(bot.respond('Test123', 0))
+```
+
     got it
     Your phone?
+
+
+```python
+print(bot.respond('12312313', 0))
+```
+
     got it
     Your email?
+
+
+```python
+print(bot.respond('a@b.c', 0))
+```
+
     got it
     
 
@@ -150,25 +187,59 @@ bot = TextAdapter(
                       'Email should be of format user@server.domain', validate_email),
                            ))
 bot.r.flushall() # clear all old sessions
+```
 
+
+
+
+    True
+
+
+
+```python
 print(bot.respond('hi', 0))
-print(bot.respond('Test123', 0))
-print(bot.respond('12312', 0))
-print(bot.respond('1231231312', 0))
-print(bot.respond('a@b', 0))
-print(bot.respond('a@b.c', 0))
 ```
 
     Welcome to QnA bot
     Your name?
+
+
+```python
+print(bot.respond('Test123', 0))
+```
+
     got it
     Your phone?
+
+
+```python
+print(bot.respond('12312', 0))
+```
+
     phone num should be 10 digits
     Your phone?
+
+
+```python
+print(bot.respond('1231231312', 0))
+```
+
     got it
     Your email?
+
+
+```python
+print(bot.respond('a@b', 0))
+```
+
     Email should be of format user@server.domain
     Your email?
+
+
+```python
+print(bot.respond('a@b.c', 0))
+```
+
     got it
     
 
