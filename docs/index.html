@@ -53,6 +53,13 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Documentation">Documentation<a class="anchor-link" href="#Documentation"> </a></h2><p>Please visit <a href="https://kulkarniniraj.github.io/flowchatbot/">docs</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use"> </a></h2>
 </div>
 </div>
@@ -168,10 +175,7 @@ So a nested dict may look like:</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current key2 data {&#39;pos&#39;: &#39;key2&#39;}
-composite question current key2 data {&#39;key2&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;pos&#39;: &#39;key2&#39;}
-adapter data {&#39;key2&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;pos&#39;: &#39;key2&#39;}
-Hello World!
+<pre>Hello World!
 
 </pre>
 </div>
@@ -185,8 +189,7 @@ Hello World!
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First 3 lines are debug output showing chatbot's state 
-Last line shows response to input 'hi'
+<p>First line shows response to input 'hi'
 The blank last line means bot has restarted from top and has a blank question.</p>
 <p>Let's add some question</p>
 
@@ -223,18 +226,204 @@ The blank last line means bot has restarted from top and has a blank question.</
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current key2 data {&#39;pos&#39;: &#39;key2&#39;}
-composite question current key2 data {&#39;key2&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;pos&#39;: &#39;key2&#39;}
-adapter data {&#39;key2&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;pos&#39;: &#39;key2&#39;}
-Hello World!
+<pre>Hello World!
 Loop again?
-composite answer current key2 data {&#39;key2&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;pos&#39;: &#39;key2&#39;}
-composite question current key2 data {&#39;key2&#39;: {&#39;data&#39;: &#39;hello&#39;}, &#39;pos&#39;: &#39;key2&#39;}
-adapter data {&#39;key2&#39;: {&#39;data&#39;: &#39;hello&#39;}, &#39;pos&#39;: &#39;key2&#39;}
 Hello World!
 Loop again?
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Q&amp;A-bot">Q&amp;A bot<a class="anchor-link" href="#Q&amp;A-bot"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flowchatbot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">TextAdapter</span><span class="p">(</span>
+            <span class="n">Composite</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span>
+                  <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Welcome to QnA bot&#39;</span><span class="p">),</span>
+                  <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;key3&#39;</span><span class="p">,</span> <span class="s1">&#39;Your name?&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">),</span>
+                  <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;key4&#39;</span><span class="p">,</span> <span class="s1">&#39;Your phone?&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">),</span>
+                  <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;key5&#39;</span><span class="p">,</span> <span class="s1">&#39;Your email?&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">),</span>
+                           <span class="p">))</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">flushall</span><span class="p">()</span> <span class="c1"># clear all old sessions</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;Test123&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;12312313&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;a@b.c&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Welcome to QnA bot
+Your name?
+got it
+Your phone?
+got it
+Your email?
+got it
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Validate-inputs">Validate inputs<a class="anchor-link" href="#Validate-inputs"> </a></h4>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="k">def</span> <span class="nf">validate_phone</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;\d</span><span class="si">{10}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;[a-zA-Z0-9_]+@[a-zA-Z0-9_.]+\.[a-zA-Z0-9_]&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flowchatbot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">TextAdapter</span><span class="p">(</span>
+            <span class="n">Composite</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span>
+                  <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Welcome to QnA bot&#39;</span><span class="p">),</span>
+                  <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;key3&#39;</span><span class="p">,</span> <span class="s1">&#39;Your name?&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">),</span>
+                  <span class="n">ValidatedSegment</span><span class="p">(</span><span class="s1">&#39;key4&#39;</span><span class="p">,</span> <span class="s1">&#39;Your phone?&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;phone num should be 10 digits&#39;</span><span class="p">,</span> <span class="n">validate_phone</span><span class="p">),</span>
+                  <span class="n">ValidatedSegment</span><span class="p">(</span><span class="s1">&#39;key5&#39;</span><span class="p">,</span> <span class="s1">&#39;Your email?&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;Email should be of format user@server.domain&#39;</span><span class="p">,</span> <span class="n">validate_email</span><span class="p">),</span>
+                           <span class="p">))</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">flushall</span><span class="p">()</span> <span class="c1"># clear all old sessions</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;Test123&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;12312&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;1231231312&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;a@b&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;a@b.c&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Welcome to QnA bot
+Your name?
+got it
+Your phone?
+phone num should be 10 digits
+Your phone?
+got it
+Your email?
+Email should be of format user@server.domain
+Your email?
+got it
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Get chatbot data at end with</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;key2&#39;: {&#39;data&#39;: &#39;hi&#39;},
+ &#39;key3&#39;: {&#39;data&#39;: &#39;Test123&#39;},
+ &#39;key4&#39;: {&#39;data&#39;: &#39;1231231312&#39;},
+ &#39;key5&#39;: {&#39;data&#39;: &#39;a@b.c&#39;},
+ &#39;pos&#39;: &#39;key2&#39;}</pre>
+</div>
+
 </div>
 
 </div>

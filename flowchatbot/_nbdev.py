@@ -2,7 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"get_chained_data": "multiprocess-bot.ipynb",
+index = {"debug_print": "multiprocess-bot.ipynb",
+         "get_chained_data": "multiprocess-bot.ipynb",
          "set_chained_data": "multiprocess-bot.ipynb",
          "tryint": "multiprocess-bot.ipynb",
          "CHAT_RET": "multiprocess-bot.ipynb",

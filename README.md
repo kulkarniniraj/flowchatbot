@@ -12,6 +12,9 @@ Few class names given in API were inspired from fluid/water piping model.
 
 Clone this repo and copy flowchatbot folder in your source folder
 
+## Documentation
+Please visit [docs](https://kulkarniniraj.github.io/flowchatbot/)
+
 ## How to use
 
 ### Concepts
@@ -61,15 +64,11 @@ bot.r.flushall() # clear all old sessions
 print(bot.respond('hi', 0)) # 0 is session id, used as key in redis
 ```
 
-    composite answer current key2 data {'pos': 'key2'}
-    composite question current key2 data {'key2': {'data': 'hi'}, 'pos': 'key2'}
-    adapter data {'key2': {'data': 'hi'}, 'pos': 'key2'}
     Hello World!
     
 
 
-First 3 lines are debug output showing chatbot's state 
-Last line shows response to input 'hi'
+First line shows response to input 'hi'
 The blank last line means bot has restarted from top and has a blank question.
 
 Let's add some question
@@ -88,14 +87,105 @@ print(bot.respond('hi', 0)) # 0 is session id, used as key in redis
 print(bot.respond('hello', 0))
 ```
 
-    composite answer current key2 data {'pos': 'key2'}
-    composite question current key2 data {'key2': {'data': 'hi'}, 'pos': 'key2'}
-    adapter data {'key2': {'data': 'hi'}, 'pos': 'key2'}
     Hello World!
     Loop again?
-    composite answer current key2 data {'key2': {'data': 'hi'}, 'pos': 'key2'}
-    composite question current key2 data {'key2': {'data': 'hello'}, 'pos': 'key2'}
-    adapter data {'key2': {'data': 'hello'}, 'pos': 'key2'}
     Hello World!
     Loop again?
+
+
+### Q&A bot
+
+```python
+from flowchatbot import *
+bot = TextAdapter(
+            Composite('key1',
+                  Segment('key2', '', 'Welcome to QnA bot'),
+                  Segment('key3', 'Your name?', 'got it'),
+                  Segment('key4', 'Your phone?', 'got it'),
+                  Segment('key5', 'Your email?', 'got it'),
+                           ))
+bot.r.flushall() # clear all old sessions
+
+print(bot.respond('hi', 0))
+print(bot.respond('Test123', 0))
+print(bot.respond('12312313', 0))
+print(bot.respond('a@b.c', 0))
+```
+
+    Welcome to QnA bot
+    Your name?
+    got it
+    Your phone?
+    got it
+    Your email?
+    got it
+    
+
+
+#### Validate inputs
+
+```python
+import re
+def validate_phone(data):
+    if re.match('\d{10}', data) is not None:
+        return 1
+    return 0
+
+def validate_email(data):
+    if re.match('[a-zA-Z0-9_]+@[a-zA-Z0-9_.]+\.[a-zA-Z0-9_]', data) is not None:
+        return 1
+    return 0
+
+```
+
+```python
+from flowchatbot import *
+bot = TextAdapter(
+            Composite('key1',
+                  Segment('key2', '', 'Welcome to QnA bot'),
+                  Segment('key3', 'Your name?', 'got it'),
+                  ValidatedSegment('key4', 'Your phone?', 'got it',
+                                  'phone num should be 10 digits', validate_phone),
+                  ValidatedSegment('key5', 'Your email?', 'got it',
+                      'Email should be of format user@server.domain', validate_email),
+                           ))
+bot.r.flushall() # clear all old sessions
+
+print(bot.respond('hi', 0))
+print(bot.respond('Test123', 0))
+print(bot.respond('12312', 0))
+print(bot.respond('1231231312', 0))
+print(bot.respond('a@b', 0))
+print(bot.respond('a@b.c', 0))
+```
+
+    Welcome to QnA bot
+    Your name?
+    got it
+    Your phone?
+    phone num should be 10 digits
+    Your phone?
+    got it
+    Your email?
+    Email should be of format user@server.domain
+    Your email?
+    got it
+    
+
+
+Get chatbot data at end with
+
+```python
+bot.get_data(0)
+```
+
+
+
+
+    {'key2': {'data': 'hi'},
+     'key3': {'data': 'Test123'},
+     'key4': {'data': '1231231312'},
+     'key5': {'data': 'a@b.c'},
+     'pos': 'key2'}
+
 
