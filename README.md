@@ -260,3 +260,242 @@ bot.get_data(0)
      'pos': 'key2'}
 
 
+
+### Chatbot with decision making elements
+
+Let's build a sample bot that asks if soap or hand sanitizer is needed and quotes unit price accordingly
+1. Ask for choice
+
+```python
+from flowchatbot import *
+bot = TextAdapter(
+            Composite('key1',
+                  Segment('key2', '', 'Welcome to Shop bot'),
+                  Segment('name', 'Your name?', 'got it'),
+                  MultiChoiceSegment('choice', 'Which item do you want?',
+                                    ['Soap',
+                                    'Hand Sanitizer'], 'Sure'), # ask for choice
+                      
+                           ))
+bot.r.flushall() # clear all old sessions
+```
+
+
+
+
+    True
+
+
+
+```python
+print(bot.respond('hi', 1))
+```
+
+    Welcome to Shop bot
+    Your name?
+
+
+```python
+print(bot.respond('Testing', 1))
+```
+
+    got it
+    Which item do you want?
+    1. Soap
+    2. Hand Sanitizer
+
+
+```python
+print(bot.respond('3', 1))
+```
+
+    Please enter one of 1..2 as answer
+    Which item do you want?
+    1. Soap
+    2. Hand Sanitizer
+
+
+```python
+print(bot.respond('1', 1))
+```
+
+    Sure
+    
+
+
+```python
+bot.get_data(1)
+```
+
+
+
+
+    {'key2': {'data': 'hi'},
+     'name': {'data': 'Testing'},
+     'choice': {'data': [0, 'Soap']},
+     'pos': 'key2'}
+
+
+
+2. Take branch as per choice
+
+```python
+from flowchatbot import *
+
+def decide_product(data):
+    return get_chained_data(data, 'choice', 'data')[0]
+
+bot = TextAdapter(
+            Composite('key1',
+                  Segment('key2', '', 'Welcome to Shop bot'),
+                  Segment('name', 'Your name?', 'got it'),
+                  MultiChoiceSegment('choice', 'Which item do you want?',
+                                    ['Soap',
+                                    'Hand Sanitizer'], 'Sure'), # ask for choice
+                  Splitter('split1', 
+                           Segment('soap', 'Price of one soap is 30 Rs.', 'got it'),
+                           Segment('sanitize', 
+                                   'Price of hand sanitizer bottle is 60 Rs.', 'got it'),
+                          decider_fn = decide_product
+                           )))
+bot.r.flushall() # clear all old sessions
+```
+
+
+
+
+    True
+
+
+
+```python
+print(bot.respond('hi', 1))
+print(bot.respond('Testing', 1))
+```
+
+    Welcome to Shop bot
+    Your name?
+    got it
+    Which item do you want?
+    1. Soap
+    2. Hand Sanitizer
+
+
+```python
+print(bot.respond('3', 1))
+```
+
+    Please enter one of 1..2 as answer
+    Which item do you want?
+    1. Soap
+    2. Hand Sanitizer
+
+
+```python
+print(bot.respond('2', 1))
+```
+
+    Sure
+    Price of hand sanitizer bottle is 60 Rs.
+
+
+### Add computation at the end
+
+```python
+from flowchatbot import *
+
+def decide_product(data):
+    return get_chained_data(data, 'choice', 'data')[0]
+
+class PriceCompute(ComputeSegment):
+    def answer(self, resp, data):
+        ch = get_chained_data(data, 'choice', 'data')[0]
+        price = [30, 60]
+        try:
+            vol = int(resp)
+        except:
+            vol = 0
+        cost = vol * price[ch]
+        set_chained_data(data, 'calculate', 'data', val=cost)
+        return CHAT_RET.NEXT, {'txt': f'Total cost is {cost} Rs.'}
+    
+bot = TextAdapter(
+            Composite('key1',
+                  Segment('key2', '', 'Welcome to Shop bot'),
+                  Segment('name', 'Your name?', 'got it'),
+                  MultiChoiceSegment('choice', 'Which item do you want?',
+                                    ['Soap',
+                                    'Hand Sanitizer'], 'Sure'), # ask for choice
+                  Splitter('split1', 
+                           Segment('soap', 'Price of one soap is 30 Rs. ' +
+                           'Put the order?', 'got it'),
+                           Segment('sanitize', 
+                                   'Price of hand sanitizer bottle is 60 Rs. ' +
+                                   'Put the order?', 'got it'),
+                          decider_fn = decide_product
+                           ),
+                  PriceCompute('calculate', 'How many units do you want?', '')))
+bot.r.flushall() # clear all old sessions
+```
+
+
+
+
+    True
+
+
+
+```python
+print(bot.respond('hi', 1))
+print(bot.respond('Testing', 1))
+print(bot.respond('3', 1))
+print(bot.respond('2', 1))
+```
+
+    Welcome to Shop bot
+    Your name?
+    got it
+    Which item do you want?
+    1. Soap
+    2. Hand Sanitizer
+    Please enter one of 1..2 as answer
+    Which item do you want?
+    1. Soap
+    2. Hand Sanitizer
+    Sure
+    Price of hand sanitizer bottle is 60 Rs. Put the order?
+
+
+```python
+print(bot.respond('yes', 1))
+```
+
+    got it
+    How many units do you want?
+
+
+```python
+print(bot.respond('5', 1))
+```
+
+    Total cost is 300 Rs.
+    
+
+
+```python
+bot.get_data(1)
+```
+
+
+
+
+    {'key2': {'data': 'hi'},
+     'name': {'data': 'Testing'},
+     'choice': {'data': [1, 'Hand Sanitizer']},
+     'split1': {'pos': 'sanitize', 'sanitize': {'data': 'yes'}},
+     'calculate': {'data': 300},
+     'pos': 'key2'}
+
+
+
+## Footer

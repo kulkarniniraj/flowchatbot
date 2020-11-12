@@ -12,9 +12,6 @@ entries:
     - output: web,pdf
       title: Flow Chatbot library API
       url: multiprocess-bot.html
-    - output: web,pdf
-      title: Title
-      url: scratchpad.html
     output: web
     title: flowchatbot
   output: web
