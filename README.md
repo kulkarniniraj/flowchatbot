@@ -122,6 +122,8 @@ print(bot.respond('hello', 0))
 
 
 ### Q&A bot
+Let's build a bot to ask series of questions, one after another. Basic flow is shown in figure below
+![Fig 3](images/3.png)
 
 ```python
 from flowchatbot import *
