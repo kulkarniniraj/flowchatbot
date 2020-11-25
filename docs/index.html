@@ -107,28 +107,23 @@ Each element supports <code>question</code> and <code>answer</code> method for i
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Data and state for each element is stored in a <code>dict</code> object passed to it. For hierarchical elements like <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a>, data dict nest data dict of child elements.
 So a nested dict may look like:</p>
-<ul>
-<li>A<ul>
-<li>data for A</li>
-<li>B<ul>
-<li>data for B</li>
-<li>E<ul>
-<li>data for E</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>C<ul>
-<li>data for C</li>
-</ul>
-</li>
-<li>D<ul>
-<li>data for D</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+
+<pre><code>data = {'A': {
+            'data': 'data for A',
+            'B':{
+                'data': 'data for B',
+                'C':{
+                    'data': 'data for C'
+                }
+            },
+            'D':{
+                'data': 'data for D'
+            },
+            'E':{
+                'data': 'data for E'
+            }
+        }
+    }</code></pre>
 
 </div>
 </div>
@@ -144,6 +139,15 @@ So a nested dict may look like:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="A-simple-hello-world-bot">A simple hello world bot<a class="anchor-link" href="#A-simple-hello-world-bot"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll write a simple bot that says 'Hello World!' on any user input and repeats the process.
+Conceptual flow is shown in diagram below.</p>
+<p><img src="/flowchatbot/images/1.png" alt="Flow"></p>
+
 </div>
 </div>
 </div>

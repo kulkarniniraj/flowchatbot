@@ -35,22 +35,36 @@ Each element supports `question` and `answer` method for interaction. `question`
 
 Data and state for each element is stored in a `dict` object passed to it. For hierarchical elements like `Composite`, data dict nest data dict of child elements.
 So a nested dict may look like:
-- A
-    - data for A
-    - B
-        - data for B
-        - E
-            - data for E
-    - C
-        - data for C
-    - D
-        - data for D
+```
+data = {'A': {
+            'data': 'data for A',
+            'B':{
+                'data': 'data for B',
+                'C':{
+                    'data': 'data for C'
+                }
+            },
+            'D':{
+                'data': 'data for D'
+            },
+            'E':{
+                'data': 'data for E'
+            }
+        }
+    }
+```
 
 An adapter is built on top to simplify question answer process. Given `TextAdapater` had just one method, `respond` which first call answer method of root node with user response, then seeks next question and prints it.
 
 `TextAdapter` stores all data in redis for session management. An alternative adapter can use any available method for session management if redis does not server purpose. Chatbot implementation and data persistance management are separated.
 
 ### A simple hello world bot
+
+We'll write a simple bot that says 'Hello World!' on any user input and repeats the process.
+Conceptual flow is shown in diagram below.
+
+
+![Flow](images/1.png)
 
 ```python
 from flowchatbot import *
