@@ -85,7 +85,8 @@ print(bot.respond('hi', 0)) # 0 is session id, used as key in redis
 First line shows response to input 'hi'
 The blank last line means bot has restarted from top and has a blank question.
 
-Let's add some question
+Let's ask a question before starting again. So modified flow would be:
+![Flow 2](images/2.png)
 
 ```python
 from flowchatbot import *
