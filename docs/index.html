@@ -74,10 +74,10 @@ nb_path: "index.ipynb"
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is easier to understand classes from regular flowchart elements.</p>
 <ul>
-<li>A <a href="/multiprocess-bot.html#Pipe"><code>Pipe</code></a> is baseclass defining few properties for all elements</li>
-<li>A <a href="/multiprocess-bot.html#Segment"><code>Segment</code></a> and its subclasses are regular process element of flowchart definig one operation</li>
-<li>A <a href="/multiprocess-bot.html#Splitter"><code>Splitter</code></a>/<a href="/multiprocess-bot.html#SkipSplitter"><code>SkipSplitter</code></a> is decision making element</li>
-<li>A <a href="/multiprocess-bot.html#Composite"><code>Composite</code></a>/<a href="/multiprocess-bot.html#LoopComposite"><code>LoopComposite</code></a> is Subroutine element which contains a bunch of child elements</li>
+<li>A <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a> is baseclass defining few properties for all elements</li>
+<li>A <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a> and its subclasses are regular process element of flowchart definig one operation</li>
+<li>A <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a>/<a href="/flowchatbot/multiprocess-bot.html#SkipSplitter"><code>SkipSplitter</code></a> is decision making element</li>
+<li>A <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a>/<a href="/flowchatbot/multiprocess-bot.html#LoopComposite"><code>LoopComposite</code></a> is Subroutine element which contains a bunch of child elements</li>
 </ul>
 
 </div>
@@ -97,7 +97,7 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A bot generally consists of parent <a href="/multiprocess-bot.html#Composite"><code>Composite</code></a> object with all flow defined inside.
+<p>A bot generally consists of parent <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a> object with all flow defined inside.
 Each element supports <code>question</code> and <code>answer</code> method for interaction. <code>question</code> is where you get question corresponding to data it seeks from user. <code>answer</code> is response returned after obtaining data, including error messages.</p>
 
 </div>
@@ -105,7 +105,7 @@ Each element supports <code>question</code> and <code>answer</code> method for i
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Data and state for each element is stored in a <code>dict</code> object passed to it. For hierarchical elements like <a href="/multiprocess-bot.html#Composite"><code>Composite</code></a>, data dict nest data dict of child elements.
+<p>Data and state for each element is stored in a <code>dict</code> object passed to it. For hierarchical elements like <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a>, data dict nest data dict of child elements.
 So a nested dict may look like:</p>
 
 <pre><code>data = {'A': {
@@ -131,7 +131,7 @@ So a nested dict may look like:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>An adapter is built on top to simplify question answer process. Given <code>TextAdapater</code> had just one method, <code>respond</code> which first call answer method of root node with user response, then seeks next question and prints it.</p>
-<p><a href="/multiprocess-bot.html#TextAdapter"><code>TextAdapter</code></a> stores all data in redis for session management. An alternative adapter can use any available method for session management if redis does not server purpose. Chatbot implementation and data persistance management are separated.</p>
+<p><a href="/flowchatbot/multiprocess-bot.html#TextAdapter"><code>TextAdapter</code></a> stores all data in redis for session management. An alternative adapter can use any available method for session management if redis does not server purpose. Chatbot implementation and data persistance management are separated.</p>
 
 </div>
 </div>
@@ -146,7 +146,7 @@ So a nested dict may look like:</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We'll write a simple bot that says 'Hello World!' on any user input and repeats the process.
 Conceptual flow is shown in diagram below.</p>
-<p><img src="/images/1.png" alt="Flow"></p>
+<p><img src="/flowchatbot/images/1.png" alt="Flow"></p>
 
 </div>
 </div>
