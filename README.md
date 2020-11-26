@@ -122,6 +122,7 @@ print(bot.respond('hello', 0))
 
 
 ### Q&A bot
+
 Let's build a bot to ask series of questions, one after another. Basic flow is shown in figure below
 ![Fig 3](images/3.png)
 
@@ -177,6 +178,8 @@ print(bot.respond('a@b.c', 0))
 
 
 #### Validate inputs
+For now, the inputs are not validated. ValidatedSegment takes a validating function as parameter. User response will be passed to this function and the same question will repeat till input is validated. Let's add validation to phone number and email address. So flow will be like this:
+![Flow 4](images/4.png)
 
 ```python
 import re
@@ -281,7 +284,10 @@ bot.get_data(0)
 ### Chatbot with decision making elements
 
 Let's build a sample bot that asks if soap or hand sanitizer is needed and quotes unit price accordingly
-1. Ask for choice
+
+### 1. Ask for choice
+
+A multichoice segment takes a list of possible responses as argument. User response is validated to be in range 1...N (for N choices). Both user response and actual choice is stored in data
 
 ```python
 from flowchatbot import *
@@ -354,7 +360,12 @@ bot.get_data(1)
 
 
 
-2. Take branch as per choice
+### 2. Take branch as per choice
+
+A splitter is flowchart decision making element. It takes a splitter function argument which is passed with data of parent container (usually `Composite`) and actual user response. It returns index of branch to take.
+
+So, in our case, flow will look like:
+![Flow 5](images/5.png)
 
 ```python
 from flowchatbot import *
@@ -416,7 +427,13 @@ print(bot.respond('2', 1))
     Price of hand sanitizer bottle is 60 Rs.
 
 
-### Add computation at the end
+### 3. Add computation at the end
+
+So far each segment has been a plain question answer or validation or decision making segment. We haven't associated any action with it. E.g. at the end of conversation we may want to send a mail to bot owner about customer interaction and contact details. Also if we want OTP validation for phone/email we need to interact with APIs in that particular segment.
+
+For such cases, it is useful to implement a subclass of `ComputeSegment` and override answer method. It is just like a plain segment, but answer gets data of parent (`Composite`) segment.
+
+Let's build a bot based on previous example. Here we'll add a compute segment at end to ask how many units customer wants to buy and compute price according to choice. This can be easily implemented without decision making element, but we'll use it anyway just for sake of continuity,
 
 ```python
 from flowchatbot import *

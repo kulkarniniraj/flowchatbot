@@ -306,7 +306,13 @@ Loop again?
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Q&amp;A-bot">Q&amp;A bot<a class="anchor-link" href="#Q&amp;A-bot"> </a></h3><p>Let's build a bot to ask series of questions, one after another. Basic flow is shown in figure below
+<h3 id="Q&amp;A-bot">Q&amp;A bot<a class="anchor-link" href="#Q&amp;A-bot"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's build a bot to ask series of questions, one after another. Basic flow is shown in figure below
 <img src="/flowchatbot/images/3.png" alt="Fig 3"></p>
 
 </div>
@@ -483,7 +489,9 @@ Your email?
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Validate-inputs">Validate inputs<a class="anchor-link" href="#Validate-inputs"> </a></h4>
+<h4 id="Validate-inputs">Validate inputs<a class="anchor-link" href="#Validate-inputs"> </a></h4><p>For now, the inputs are not validated. ValidatedSegment takes a validating function as parameter. User response will be passed to this function and the same question will repeat till input is validated. Let's add validation to phone number and email address. So flow will be like this:
+<img src="/flowchatbot/images/4.png" alt="Flow 4"></p>
+
 </div>
 </div>
 </div>
@@ -801,9 +809,19 @@ Your email?
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's build a sample bot that asks if soap or hand sanitizer is needed and quotes unit price accordingly</p>
-<ol>
-<li>Ask for choice</li>
-</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-Ask-for-choice">1. Ask for choice<a class="anchor-link" href="#1.-Ask-for-choice"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A multichoice segment takes a list of possible responses as argument. User response is validated to be in range 1...N (for N choices). Both user response and actual choice is stored in data</p>
 
 </div>
 </div>
@@ -1021,9 +1039,15 @@ Which item do you want?
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ol>
-<li>Take branch as per choice</li>
-</ol>
+<h3 id="2.-Take-branch-as-per-choice">2. Take branch as per choice<a class="anchor-link" href="#2.-Take-branch-as-per-choice"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A splitter is flowchart decision making element. It takes a splitter function argument which is passed with data of parent container (usually <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a>) and actual user response. It returns index of branch to take.</p>
+<p>So, in our case, flow will look like:
+<img src="/flowchatbot/images/5.png" alt="Flow 5"></p>
 
 </div>
 </div>
@@ -1184,7 +1208,16 @@ Price of hand sanitizer bottle is 60 Rs.
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Add-computation-at-the-end">Add computation at the end<a class="anchor-link" href="#Add-computation-at-the-end"> </a></h3>
+<h3 id="3.-Add-computation-at-the-end">3. Add computation at the end<a class="anchor-link" href="#3.-Add-computation-at-the-end"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far each segment has been a plain question answer or validation or decision making segment. We haven't associated any action with it. E.g. at the end of conversation we may want to send a mail to bot owner about customer interaction and contact details. Also if we want OTP validation for phone/email we need to interact with APIs in that particular segment.</p>
+<p>For such cases, it is useful to implement a subclass of <a href="/flowchatbot/multiprocess-bot.html#ComputeSegment"><code>ComputeSegment</code></a> and override answer method. It is just like a plain segment, but answer gets data of parent (<a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a>) segment.</p>
+<p>Let's build a bot based on previous example. Here we'll add a compute segment at end to ask how many units customer wants to buy and compute price according to choice. This can be easily implemented without decision making element, but we'll use it anyway just for sake of continuity,</p>
+
 </div>
 </div>
 </div>
