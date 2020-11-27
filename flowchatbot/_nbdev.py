@@ -2,7 +2,12 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"debug_print": "multiprocess-bot.ipynb",
+index = {"init": "http-adapter.ipynb",
+         "get_data": "http-adapter.ipynb",
+         "respond": "http-adapter.ipynb",
+         "app": "http-adapter.ipynb",
+         "STATE": "http-adapter.ipynb",
+         "debug_print": "multiprocess-bot.ipynb",
          "get_chained_data": "multiprocess-bot.ipynb",
          "set_chained_data": "multiprocess-bot.ipynb",
          "tryint": "multiprocess-bot.ipynb",
@@ -18,7 +23,8 @@ index = {"debug_print": "multiprocess-bot.ipynb",
          "Splitter": "multiprocess-bot.ipynb",
          "SkipSplitter": "multiprocess-bot.ipynb"}
 
-modules = ["flowchatbot.py"]
+modules = ["httpadapter.py",
+           "flowchatbot.py"]
 
 doc_url = "https://kulkarniniraj.github.io/flowchatbot/"
 

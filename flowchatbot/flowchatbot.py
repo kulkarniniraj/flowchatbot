@@ -144,7 +144,8 @@ class MultiChoiceSegment(Segment):
         self.resp_lst = resp_lst
 
     def question(self, data):
-        return {'txt': self.q + '\n' + '\n'.join([f'{i+1}. {q}' for (i,q) in enumerate(self.resp_lst)])}
+#         return {'txt': self.q + '\n' + '\n'.join([f'{i+1}. {q}' for (i,q) in enumerate(self.resp_lst)])}
+        return {'txt': self.q, 'choices': self.resp_lst}
 
     def answer(self, resp, data):
         if 0 < tryint(resp) <= len(self.resp_lst):
@@ -297,7 +298,11 @@ class TextAdapter(Pipe):
         d2 = self.root.question(data)
         debug_print(f'adapter data {data}')
         self.r.set(session, json.dumps(data))
-        return f"{d1['txt']}\n{d2['txt']}"
+        d2_str = d2['txt']
+        if 'choices' in d2:
+            d2_str += '\n' + '\n'.join([f'{i+1}. {q}' for
+                                        (i,q) in enumerate(d2['choices'])])
+        return f"{d1['txt']}\n{d2_str}"
 
 # Cell
 class Splitter(Pipe):
