@@ -11,7 +11,7 @@ entries:
       url: /
     - external_url: http-adapter.html
       output: web,pdf
-      title: Title
+      title: 'HTTP Adapter '
     - output: web,pdf
       title: Flow Chatbot library API
       url: multiprocess-bot.html
