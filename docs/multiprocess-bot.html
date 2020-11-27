@@ -346,7 +346,7 @@ Both response number and corresponding answer is stored in data</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ComputeSegment" class="doc_header"><code>class</code> <code>ComputeSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L157" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComputeSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
+<h2 id="ComputeSegment" class="doc_header"><code>class</code> <code>ComputeSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L158" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComputeSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
 </blockquote>
 <p>Segment to do computation. Data of parent elememnt is passed to answer function
 Should be inherited with overriden answer function to do actual computations</p>
@@ -379,7 +379,7 @@ Should be inherited with overriden answer function to do actual computations</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Composite" class="doc_header"><code>class</code> <code>Composite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L169" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Composite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="Composite" class="doc_header"><code>class</code> <code>Composite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L170" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Composite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Composite element, can have any other element including composite as children.
 All children form linked list and traversed sequentially while this element
@@ -414,7 +414,7 @@ When end of linked list is reached, element returns NEXT</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LoopComposite" class="doc_header"><code>class</code> <code>LoopComposite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L257" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LoopComposite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a></p>
+<h2 id="LoopComposite" class="doc_header"><code>class</code> <code>LoopComposite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L258" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LoopComposite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a></p>
 </blockquote>
 <p>Composite element with ability to start from begin once end is reached.
 Should have a Skip element before to break loop</p>
@@ -447,7 +447,7 @@ Should have a Skip element before to break loop</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TextAdapter" class="doc_header"><code>class</code> <code>TextAdapter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L275" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TextAdapter</code>(<strong><code>root</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="TextAdapter" class="doc_header"><code>class</code> <code>TextAdapter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L276" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TextAdapter</code>(<strong><code>root</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Text based adapter to invoke root element on user reponse.
 A similar adapter is needed for HTML or other bots</p>
@@ -471,163 +471,13 @@ A similar adapter is needed for HTML or other bots</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="HTTP-Adapter">HTTP Adapter<a class="anchor-link" href="#HTTP-Adapter"> </a></h3>
+<h2 id="Test-segment-and-composite">Test segment and composite<a class="anchor-link" href="#Test-segment-and-composite"> </a></h2>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Request</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/chat&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">flask_chat</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;test string 123&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre> * Serving Flask app &#34;__main__&#34; (lazy loading)
- * Environment: production
-<span class="ansi-red-fg">   WARNING: This is a development server. Do not use it in a production deployment.</span>
-   Use a production WSGI server instead.
- * Debug mode: on
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-An exception has occurred, use %tb to see the full traceback.
-
-<span class="ansi-red-fg">SystemExit</span><span class="ansi-red-fg">:</span> 1
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/niraj/miniconda3/envs/chatbot/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3425: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
-  warn(&#34;To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.&#34;, stacklevel=1)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>_archive     images		     README.md	   todo.md
-docs	     index.ipynb	     settings.ini  todo.org
-flowchatbot  multiprocess-bot.ipynb  setup.py	   todo.org~
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-segment-and-composite">Test segment and composite<a class="anchor-link" href="#Test-segment-and-composite"> </a></h2>
+<h3 id="Test-basic-segments-and-composite">Test basic segments and composite<a class="anchor-link" href="#Test-basic-segments-and-composite"> </a></h3>
 </div>
 </div>
 </div>
@@ -887,6 +737,189 @@ flowchatbot  multiprocess-bot.ipynb  setup.py	   todo.org~
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Test-multi-choice-segment">Test multi choice segment<a class="anchor-link" href="#Test-multi-choice-segment"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span> <span class="o">=</span> <span class="n">TextAdapter</span><span class="p">(</span>
+    <span class="n">Composite</span><span class="p">(</span>
+        <span class="s1">&#39;c1&#39;</span><span class="p">,</span>
+        <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;s0&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;welcome&#39;</span><span class="p">),</span>
+        <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;your name&#39;</span><span class="p">,</span> <span class="s1">&#39;got it&#39;</span><span class="p">),</span>
+        <span class="n">MultiChoiceSegment</span><span class="p">(</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;Your income bracket?&#39;</span><span class="p">,</span> 
+                          <span class="p">[</span><span class="s1">&#39;0 - 10k&#39;</span><span class="p">,</span> <span class="s1">&#39;10k-1L&#39;</span><span class="p">,</span> <span class="s1">&#39;1L-10L&#39;</span><span class="p">],</span> <span class="s1">&#39;got it&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">flushall</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>welcome
+your name
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;test123&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>got it
+Your income bracket?
+1. 0 - 10k
+2. 10k-1L
+3. 1L-10L
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>got it
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;},
+ &#39;s1&#39;: {&#39;data&#39;: &#39;test123&#39;},
+ &#39;s2&#39;: {&#39;data&#39;: [2, &#39;1L-10L&#39;]},
+ &#39;pos&#39;: &#39;s0&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Splitters">Splitters<a class="anchor-link" href="#Splitters"> </a></h2>
 </div>
 </div>
@@ -902,7 +935,7 @@ flowchatbot  multiprocess-bot.ipynb  setup.py	   todo.org~
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Splitter" class="doc_header"><code>class</code> <code>Splitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L303" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Splitter</code>(<strong><code>key</code></strong>, <strong>*<code>branches</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="Splitter" class="doc_header"><code>class</code> <code>Splitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L308" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Splitter</code>(<strong><code>key</code></strong>, <strong>*<code>branches</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Splitter element to branch flow based on some condition.</p>
 
@@ -934,7 +967,7 @@ flowchatbot  multiprocess-bot.ipynb  setup.py	   todo.org~
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SkipSplitter" class="doc_header"><code>class</code> <code>SkipSplitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L371" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SkipSplitter</code>(<strong><code>key</code></strong>, <strong><code>branch</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a></p>
+<h2 id="SkipSplitter" class="doc_header"><code>class</code> <code>SkipSplitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L376" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SkipSplitter</code>(<strong><code>key</code></strong>, <strong><code>branch</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a></p>
 </blockquote>
 <p>A branch is taken on condition otherwise skips the branch
 (name taken from skipconnection in resnets)</p>
