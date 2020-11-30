@@ -287,7 +287,7 @@ bot.get_data(0)
 
 Let's build a sample bot that asks if soap or hand sanitizer is needed and quotes unit price accordingly
 
-### 1. Ask for choice
+#### 1. Ask for choice
 
 A multichoice segment takes a list of possible responses as argument. User response is validated to be in range 1...N (for N choices). Both user response and actual choice is stored in data
 
@@ -362,7 +362,7 @@ bot.get_data(1)
 
 
 
-### 2. Take branch as per choice
+#### 2. Take branch as per choice
 
 A splitter is flowchart decision making element. It takes a splitter function argument which is passed with data of parent container (usually `Composite`) and actual user response. It returns index of branch to take.
 
@@ -429,7 +429,7 @@ print(bot.respond('2', 1))
     Price of hand sanitizer bottle is 60 Rs.
 
 
-### 3. Add computation at the end
+#### 3. Add computation at the end
 
 So far each segment has been a plain question answer or validation or decision making segment. We haven't associated any action with it. E.g. at the end of conversation we may want to send a mail to bot owner about customer interaction and contact details. Also if we want OTP validation for phone/email we need to interact with APIs in that particular segment.
 
@@ -533,5 +533,31 @@ bot.get_data(1)
      'pos': 'key2'}
 
 
+
+### HTTP Adapter
+
+A simple http adapter to host chatbot as REST API. It uses flask to host API. Default hosting location is http://localhost:5000/chat with `POST` method. 
+
+POST Paremeters:
+`user_input`: user input text
+`session`: session id (server does not provide one as of now)
+
+HTTP Adapter sends multi choice answers as buttons. Button value is numeric choice while text is choice text. 
+
+```python
+import flowchatbot.httpadapter as http
+from flowchatbot.flowchatbot import Composite, Segment, MultiChoiceSegment
+
+bot = Composite('key1',
+                  Segment('key2', '', 'Welcome to QnA bot'),
+                  Segment('key3', 'Your name?', 'got it'),
+                  Segment('key4', 'Your phone?', 'got it'),
+                  Segment('key5', 'Your email?', 'got it'),
+                  MultiChoiceSegment('key6', 'Your income bracket?', 
+                      [' < 1L', '1L - 10L', '> 10L'], 'got it')
+                           )
+
+http.init(bot)
+```
 
 ## Footer
