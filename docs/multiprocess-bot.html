@@ -36,37 +36,6 @@ nb_path: "multiprocess-bot.ipynb"
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="debug_print" class="doc_header"><code>debug_print</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>debug_print</code>(<strong>*<code>args</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-Utils">Data Utils<a class="anchor-link" href="#Data-Utils"> </a></h2>
@@ -471,7 +440,78 @@ A similar adapter is needed for HTML or other bots</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-segment-and-composite">Test segment and composite<a class="anchor-link" href="#Test-segment-and-composite"> </a></h2>
+<h2 id="Splitters">Splitters<a class="anchor-link" href="#Splitters"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Splitter" class="doc_header"><code>class</code> <code>Splitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L308" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Splitter</code>(<strong><code>key</code></strong>, <strong>*<code>branches</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+</blockquote>
+<p>Splitter element to branch flow based on some condition.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="SkipSplitter" class="doc_header"><code>class</code> <code>SkipSplitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L376" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SkipSplitter</code>(<strong><code>key</code></strong>, <strong><code>branch</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a></p>
+</blockquote>
+<p>A branch is taken on condition otherwise skips the branch
+(name taken from skipconnection in resnets)</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tests">Tests<a class="anchor-link" href="#Tests"> </a></h2>
 </div>
 </div>
 </div>
@@ -502,7 +542,6 @@ A similar adapter is needed for HTML or other bots</p>
         <span class="n">Composite</span><span class="p">(</span><span class="s1">&#39;c3&#39;</span><span class="p">,</span> 
             <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;your income&#39;</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">)</span>
                  <span class="p">)</span>
-        
     <span class="p">)</span>
 <span class="p">)</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">flushall</span><span class="p">()</span>
@@ -545,6 +584,22 @@ A similar adapter is needed for HTML or other bots</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;welcome\nyour name&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -559,6 +614,22 @@ A similar adapter is needed for HTML or other bots</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;got it\nyour phone number&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -579,6 +650,22 @@ A similar adapter is needed for HTML or other bots</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;phone number should be 10 digits with optional +91 at beginning\nyour phone number&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -593,6 +680,22 @@ A similar adapter is needed for HTML or other bots</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;got it\nyour email&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -613,6 +716,22 @@ A similar adapter is needed for HTML or other bots</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ok\nyour income&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -627,6 +746,22 @@ A similar adapter is needed for HTML or other bots</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ok\n&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -647,6 +782,22 @@ A similar adapter is needed for HTML or other bots</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;welcome\nyour name&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -661,6 +812,22 @@ A similar adapter is needed for HTML or other bots</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;got it\nyour phone number&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -681,6 +848,22 @@ A similar adapter is needed for HTML or other bots</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;phone number should be 10 digits with optional +91 at beginning\nyour phone number&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -695,6 +878,22 @@ A similar adapter is needed for HTML or other bots</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;got it\nyour email&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -715,6 +914,22 @@ A similar adapter is needed for HTML or other bots</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ok\nyour income&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -729,6 +944,22 @@ A similar adapter is needed for HTML or other bots</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ok\n&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -920,98 +1151,10 @@ Your income bracket?
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Splitters">Splitters<a class="anchor-link" href="#Splitters"> </a></h2>
+<h3 id="Test-splitters">Test splitters<a class="anchor-link" href="#Test-splitters"> </a></h3>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="Splitter" class="doc_header"><code>class</code> <code>Splitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L308" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Splitter</code>(<strong><code>key</code></strong>, <strong>*<code>branches</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
-</blockquote>
-<p>Splitter element to branch flow based on some condition.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="SkipSplitter" class="doc_header"><code>class</code> <code>SkipSplitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L376" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SkipSplitter</code>(<strong><code>key</code></strong>, <strong><code>branch</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a></p>
-</blockquote>
-<p>A branch is taken on condition otherwise skips the branch
-(name taken from skipconnection in resnets)</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-splitters">Test splitters<a class="anchor-link" href="#Test-splitters"> </a></h2>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1128,21 +1271,10 @@ Your income bracket?
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current s0 data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s0&#39;}
-composite question current ss1 data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;ss1&#39;}
-skip question data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;ss1&#39;}
-adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s4&#39;}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;welcome\nyour income&#39;</pre>
+<pre>&#39;welcome\nyour name&#39;</pre>
 </div>
 
 </div>
@@ -1169,20 +1301,6 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s1&#39;, &#39;s1&#39;: {}}}}
-skip answer data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s1&#39;, &#39;s1&#39;: {}}}}
-composite answer current s1 data {&#39;pos&#39;: &#39;s1&#39;, &#39;s1&#39;: {}}
-composite question current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}}}}
-skip question data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}}}}
-composite question current s2 data {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}}
-adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {}}}}
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -1219,20 +1337,6 @@ adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {}}}}
-skip answer data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {}}}}
-composite answer current s2 data {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {}}
-composite question current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-skip question data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-composite question current s2 data {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}
-adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -1263,20 +1367,6 @@ adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-skip answer data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-composite answer current s2 data {&#39;pos&#39;: &#39;s2&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;&#39;}}
-composite question current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}}}}
-skip question data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}}}}
-composite question current s3 data {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}}
-adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {}}}}
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -1313,20 +1403,6 @@ adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {}}}}
-skip answer data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {}}}}
-composite answer current s3 data {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {}}
-composite question current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-skip question data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-composite question current s3 data {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}
-adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -1357,18 +1433,6 @@ adapter data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current ss1 data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-skip answer data {&#39;pos&#39;: &#39;ss1&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}}}
-composite answer current s3 data {&#39;pos&#39;: &#39;s3&#39;, &#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;&#39;}}
-composite question current s4 data {&#39;pos&#39;: &#39;s4&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}}
-adapter data {&#39;pos&#39;: &#39;s4&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {}}
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -1405,20 +1469,6 @@ adapter data {&#39;pos&#39;: &#39;s4&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;h
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current s4 data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s4&#39;}
-composite question current s5 data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;9000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s5&#39;}
-splitter question data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;9000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s5&#39;}
-splitter decider {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;9000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s5&#39;} 9000
-decider s5 0
-splitter question data after pos set s5 s51 {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;9000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s51&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s5&#39;}
-adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;9000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s51&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}, &#39;s51&#39;: {}}, &#39;pos&#39;: &#39;s5&#39;}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -1452,16 +1502,109 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>composite answer current s5 data {&#39;pos&#39;: &#39;s5&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {}}}
-splitter answer data {&#39;pos&#39;: &#39;s5&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {}}}
-splitter decider {&#39;pos&#39;: &#39;s5&#39;, &#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {}}} 11000
-decider s5 1
-composite question current s0 data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s0&#39;}
-adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;, &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;}, &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;}, &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}}, &#39;s4&#39;: {&#39;data&#39;: &#39;11000&#39;}, &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s52&#39;: {&#39;data&#39;: &#39;No&#39;}}, &#39;pos&#39;: &#39;s0&#39;}
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ok\n&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;welcome\nyour income&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Personal information part skipped as skip splitter returns zero</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;19000&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ok\nDo you have car?&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
 
 <div class="output_area">
 
@@ -1486,7 +1629,59 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;},
+ &#39;ss1&#39;: {&#39;pos&#39;: &#39;c2&#39;,
+  &#39;c2&#39;: {&#39;s1&#39;: {&#39;data&#39;: &#39;Niraj&#39;},
+   &#39;s2&#39;: {&#39;data&#39;: &#39;1231234567&#39;},
+   &#39;s3&#39;: {&#39;data&#39;: &#39;asd@qwe.com&#39;}}},
+ &#39;s4&#39;: {&#39;data&#39;: &#39;19000&#39;},
+ &#39;s5&#39;: {&#39;pos&#39;: &#39;s52&#39;, &#39;s51&#39;: {&#39;data&#39;: &#39;No&#39;}, &#39;s52&#39;: {&#39;data&#39;: &#39;yes&#39;}},
+ &#39;pos&#39;: &#39;s0&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Test-callbacks">Test callbacks<a class="anchor-link" href="#Test-callbacks"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span> <span class="o">=</span> <span class="n">TextAdapter</span><span class="p">(</span><span class="n">Composite</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                           <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s1 question&#39;</span><span class="p">,</span> <span class="s1">&#39;s1 answer&#39;</span><span class="p">,</span> 
+                                   <span class="n">on_question</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1 q callback </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span>
+                                   <span class="n">on_answer</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">resp</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> 
+                                       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1 a callback resp: </span><span class="si">{</span><span class="n">resp</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                                  <span class="p">)</span>
+                           <span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1503,7 +1698,57 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>s1 a callback resp: hi {&#39;data&#39;: &#39;hi&#39;}
+s1 q callback {&#39;data&#39;: &#39;hi&#39;}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;s1 answer\ns1 question&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span> <span class="o">=</span> <span class="n">TextAdapter</span><span class="p">(</span><span class="n">Composite</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                           <span class="n">ValidatedSegment</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s1 question&#39;</span><span class="p">,</span> <span class="s1">&#39;s1 answer&#39;</span><span class="p">,</span> 
+                                            <span class="s1">&#39;wrong greetings&#39;</span><span class="p">,</span>
+                                            <span class="k">lambda</span> <span class="n">resp</span><span class="p">:</span> <span class="n">resp</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">),</span>
+                                   <span class="n">on_question</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1 q callback </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span>
+                                   <span class="n">on_answer</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">resp</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> 
+                                       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1 a callback resp: </span><span class="si">{</span><span class="n">resp</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                                  <span class="p">)</span>
+                           <span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1520,11 +1765,100 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">()</span>
-<span class="n">r</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">session_id</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">session_id</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">expire</span><span class="p">(</span><span class="n">session_id</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">session_id</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hullo&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>s1 q callback {&#39;data&#39;: &#39;&#39;}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;wrong greetings\ns1 question&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;Hi&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>s1 a callback resp: Hi {&#39;data&#39;: &#39;&#39;}
+s1 a callback resp: Hi {&#39;data&#39;: &#39;&#39;}
+s1 q callback {&#39;data&#39;: &#39;Hi&#39;}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;s1 answer\ns1 question&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span> <span class="o">=</span> <span class="n">TextAdapter</span><span class="p">(</span><span class="n">Composite</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                            <span class="n">Segment</span><span class="p">(</span><span class="s1">&#39;s0&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Welcom&#39;</span><span class="p">),</span>
+                           <span class="n">MultiChoiceSegment</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s1 question&#39;</span><span class="p">,</span> 
+                                              <span class="p">[</span><span class="s1">&#39;ans 1&#39;</span><span class="p">,</span> <span class="s1">&#39;ans 2&#39;</span><span class="p">,</span> <span class="s1">&#39;ans 3&#39;</span><span class="p">],</span>
+                                              <span class="s1">&#39;s1 answer&#39;</span><span class="p">,</span> 
+                                   <span class="n">on_question</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1 q callback </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span>
+                                   <span class="n">on_answer</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">resp</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> 
+                                       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1 a callback resp: </span><span class="si">{</span><span class="n">resp</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                                  <span class="p">)</span>
+                           <span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1541,10 +1875,35 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(\+91)?\d</span><span class="si">{10}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;+911231231231&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">flushall</span><span class="p">()</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>s1 q callback {}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Welcom\ns1 question\n1. ans 1\n2. ans 2\n3. ans 3&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1558,10 +1917,34 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install redis
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>s1 q callback {}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Please enter one of 1..3 as answer\ns1 question\n1. ans 1\n2. ans 2\n3. ans 3&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1575,10 +1958,34 @@ adapter data {&#39;s0&#39;: {&#39;data&#39;: &#39;hi&#39;}, &#39;ss1&#39;: {&#39
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>s1 a callback resp: 1 {}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;s1 answer\n&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
