@@ -130,8 +130,9 @@ So a nested dict may look like:</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>An adapter is built on top to simplify question answer process. Given <code>TextAdapater</code> had just one method, <a href="/flowchatbot/http-adapter.html#respond"><code>respond</code></a> which first call answer method of root node with user response, then seeks next question and prints it.</p>
+<p>An adapter is built on top to simplify question answer process. Given <a href="/flowchatbot/multiprocess-bot.html#TextAdapter"><code>TextAdapter</code></a> has just one method, <a href="/flowchatbot/http-adapter.html#respond"><code>respond</code></a> which first call answer method of root node with user response, then seeks next question and prints it.</p>
 <p><a href="/flowchatbot/multiprocess-bot.html#TextAdapter"><code>TextAdapter</code></a> stores all data in redis for session management. An alternative adapter can use any available method for session management if redis does not server purpose. Chatbot implementation and data persistance management are separated.</p>
+<p>A sampe <code>httpadapter</code> is also shown, which uses flask and redis for exporting REST API for chatbot</p>
 
 </div>
 </div>

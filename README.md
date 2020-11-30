@@ -54,9 +54,11 @@ data = {'A': {
     }
 ```
 
-An adapter is built on top to simplify question answer process. Given `TextAdapater` had just one method, `respond` which first call answer method of root node with user response, then seeks next question and prints it.
+An adapter is built on top to simplify question answer process. Given `TextAdapter` has just one method, `respond` which first call answer method of root node with user response, then seeks next question and prints it.
 
 `TextAdapter` stores all data in redis for session management. An alternative adapter can use any available method for session management if redis does not server purpose. Chatbot implementation and data persistance management are separated.
+
+A sampe `httpadapter` is also shown, which uses flask and redis for exporting REST API for chatbot
 
 ### A simple hello world bot
 
