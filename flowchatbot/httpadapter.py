@@ -57,12 +57,3 @@ def respond():
                        enumerate(d2['choices'])]
     print(data)
     return json.dumps(out)
-#             {'value': 'a1', 'text': 'First Button'},
-#                 {'value': 'a2', 'text': 'Second Button'},
-#                 {'value': 'a3', 'text': 'Third Button with really long text to test multiline'+
-#                     ' Second line added here'}, {'value': 'a4',
-#                         'text': 'Fourth Button with really long text to test multiline'+
-#                                             ' Second line added here'}],
-    # btns; key for buttons
-    # value, text: fields
-

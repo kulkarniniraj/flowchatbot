@@ -560,4 +560,32 @@ bot = Composite('key1',
 http.init(bot)
 ```
 
+## Debugging
+
+```python
+from flowchatbot import *
+```
+
+To enable debug information just call
+
+```python
+enable_debug()
+```
+
+Now all debug messages in classes will be enabled. They'll dump state after question/answer function.
+To add your own debug prints, simply call
+
+```python
+debug_print("debug 123")
+```
+
+    DEBUG: ('debug 123',)
+
+
+to disable debug messages, call
+
+```python
+disable_debug()
+```
+
 ## Footer
