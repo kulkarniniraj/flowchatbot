@@ -39,10 +39,11 @@ def get_chained_data(data, *keys, default = None):
     """
     Gets data from dict hierarchy with given keys
     if any link is missing, default is set at that key-chain and returned
-    :data: data dictionary
-    :*keys: heirarchy of all keys towards desired key
-    :default: value to set and return if any key is missing
-    :returns: value found at key heirarchy in data or default if any key is missing
+    - `data`: data dictionary
+    - `*keys`: heirarchy of all keys towards desired key
+    - `default`: value to set and return if any key is missing
+    - `returns`: value found at key heirarchy in data or default
+        if any key is missing
     """
     d = data
     for key in keys:
@@ -57,10 +58,10 @@ def get_chained_data(data, *keys, default = None):
 def set_chained_data(data, *keys, val=0):
     """
     Sets data to dict hierarchy and creating links where necessary
-    :data: data dictionary
-    :*keys: heirarchy of all keys towards desired key
-    :val: value to set
-    :returns: nothing
+    - `data`: data dictionary<br/>
+    - `*keys`: heirarchy of all keys towards desired key<br/>
+    - `val`: value to set<br/>
+    - `returns`: nothing
     """
     d = data
     for key in keys[:-1]:
