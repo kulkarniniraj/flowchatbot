@@ -12,14 +12,23 @@ import re
 
 # Cell
 def enable_debug():
+    """
+    Enable debug messages
+    """
     global DEBUG
     DEBUG = True
 
 def disable_debug():
+    """
+    Disable debug messages
+    """
     global DEBUG
     DEBUG = False
 
 def debug_print(*args):
+    """
+    Debug print args, only printed if debug is enabled
+    """
     if ('DEBUG' in globals()) and (DEBUG == 1):
         print(f'DEBUG: {args}')
     else:
@@ -29,7 +38,11 @@ def debug_print(*args):
 def get_chained_data(data, *keys, default = None):
     """
     Gets data from dict hierarchy with given keys
-    (none if any link is missing)
+    if any link is missing, default is set at that key-chain and returned
+    :data: data dictionary
+    :*keys: heirarchy of all keys towards desired key
+    :default: value to set and return if any key is missing
+    :returns: value found at key heirarchy in data or default if any key is missing
     """
     d = data
     for key in keys:
@@ -44,6 +57,10 @@ def get_chained_data(data, *keys, default = None):
 def set_chained_data(data, *keys, val=0):
     """
     Sets data to dict hierarchy and creating links where necessary
+    :data: data dictionary
+    :*keys: heirarchy of all keys towards desired key
+    :val: value to set
+    :returns: nothing
     """
     d = data
     for key in keys[:-1]:
@@ -81,6 +98,16 @@ class Pipe:
     Sets up key, None as next link and callbacks for question and answer call
     """
     def __init__(self, on_question=None, on_answer=None):
+        """
+        Base class with callbacks on question and answer function
+        :on_question: callback function called on question.
+            Signature is fn(data: Dict) -> None
+            maybe called more than once if answer is validated
+        :on_answer: callback called on answer
+            Signature is fn(resp: str, data: dict) -> None
+            depending on segment type, it may be called initially,
+                after validation etc.
+        """
         self.key = ''
         self.next = None
         self.on_question = on_question
@@ -110,10 +137,18 @@ class Segment(Pipe):
         self.key = key
 
     def question(self, data):
+        """
+        Called for getting question from segment, returns question passed during
+        initialization
+        """
         Pipe.question(self, data)
         return {'txt': self.q}
 
     def answer(self, resp, data):
+        """
+        Called for saving response and getting answer
+        No validation done on response
+        """
         Pipe.answer(self, resp, data)
 #         data['data'] = resp
         set_chained_data(data, 'data', val=resp)
@@ -136,6 +171,11 @@ class ValidatedSegment(Segment):
         self.valid_fn = valid_fn
 
     def answer(self, resp, data):
+        """
+        Called with user response to get answer.
+        Validation is done on resp and bot stays on this segment till
+        validation functions returns 1
+        """
         if self.valid_fn(resp):
             # Pipe.answer(self, resp, data)
             return super().answer(resp, data)
@@ -158,11 +198,18 @@ class MultiChoiceSegment(Segment):
         self.resp_lst = resp_lst
 
     def question(self, data):
+        """
+        Returns question text and list of options. Adapter may convert it into
+        multiline string or button or any other type
+        """
         Pipe.question(self, data)
 #         return {'txt': self.q + '\n' + '\n'.join([f'{i+1}. {q}' for (i,q) in enumerate(self.resp_lst)])}
         return {'txt': self.q, 'choices': self.resp_lst}
 
     def answer(self, resp, data):
+        """
+        Validates response to be an integer between 1..N for N choices
+        """
         if 0 < tryint(resp) <= len(self.resp_lst):
             Pipe.answer(self, resp, data)
 #             data['data'] = (tryint(resp) - 1, self.resp_lst[tryint(resp) - 1])

@@ -55,6 +55,7 @@ nb_path: "multiprocess-bot.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="enable_debug" class="doc_header"><code>enable_debug</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>enable_debug</code>()</p>
 </blockquote>
+<p>Enable debug messages</p>
 
 </div>
 
@@ -77,8 +78,9 @@ nb_path: "multiprocess-bot.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="disable_debug" class="doc_header"><code>disable_debug</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>disable_debug</code>()</p>
+<h4 id="disable_debug" class="doc_header"><code>disable_debug</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>disable_debug</code>()</p>
 </blockquote>
+<p>Disable debug messages</p>
 
 </div>
 
@@ -101,8 +103,9 @@ nb_path: "multiprocess-bot.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="debug_print" class="doc_header"><code>debug_print</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>debug_print</code>(<strong>*<code>args</code></strong>)</p>
+<h4 id="debug_print" class="doc_header"><code>debug_print</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L28" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>debug_print</code>(<strong>*<code>args</code></strong>)</p>
 </blockquote>
+<p>Debug print args, only printed if debug is enabled</p>
 
 </div>
 
@@ -205,10 +208,14 @@ nb_path: "multiprocess-bot.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_chained_data" class="doc_header"><code>get_chained_data</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_chained_data</code>(<strong><code>data</code></strong>, <strong>*<code>keys</code></strong>, <strong><code>default</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="get_chained_data" class="doc_header"><code>get_chained_data</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_chained_data</code>(<strong><code>data</code></strong>, <strong>*<code>keys</code></strong>, <strong><code>default</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Gets data from dict hierarchy with given keys
-(none if any link is missing)</p>
+if any link is missing, default is set at that key-chain and returned
+:data: data dictionary
+:*keys: heirarchy of all keys towards desired key
+:default: value to set and return if any key is missing
+:returns: value found at key heirarchy in data or default if any key is missing</p>
 
 </div>
 
@@ -231,9 +238,13 @@ nb_path: "multiprocess-bot.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="set_chained_data" class="doc_header"><code>set_chained_data</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L44" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>set_chained_data</code>(<strong><code>data</code></strong>, <strong>*<code>keys</code></strong>, <strong><code>val</code></strong>=<em><code>0</code></em>)</p>
+<h4 id="set_chained_data" class="doc_header"><code>set_chained_data</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>set_chained_data</code>(<strong><code>data</code></strong>, <strong>*<code>keys</code></strong>, <strong><code>val</code></strong>=<em><code>0</code></em>)</p>
 </blockquote>
-<p>Sets data to dict hierarchy and creating links where necessary</p>
+<p>Sets data to dict hierarchy and creating links where necessary
+:data: data dictionary
+:*keys: heirarchy of all keys towards desired key
+:val: value to set
+:returns: nothing</p>
 
 </div>
 
@@ -263,7 +274,7 @@ nb_path: "multiprocess-bot.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="tryint" class="doc_header"><code>tryint</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tryint</code>(<strong><code>x</code></strong>)</p>
+<h4 id="tryint" class="doc_header"><code>tryint</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L74" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tryint</code>(<strong><code>x</code></strong>)</p>
 </blockquote>
 <p>Check if input can be parsed as int, return -1 otherwise</p>
 
@@ -428,7 +439,7 @@ nb_path: "multiprocess-bot.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CHAT_RET" class="doc_header"><code>CHAT_RET</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L68" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Enum</code> = [STAY, NEXT]</p>
+<h2 id="CHAT_RET" class="doc_header"><code>CHAT_RET</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L85" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Enum</code> = [STAY, NEXT]</p>
 </blockquote>
 <p>Movement values from chat segment.
 If return stay, bot should reask this question
@@ -462,7 +473,7 @@ If next, bot should move to next in link</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Pipe" class="doc_header"><code>class</code> <code>Pipe</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L78" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Pipe</code>(<strong><code>on_question</code></strong>=<em><code>None</code></em>, <strong><code>on_answer</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="Pipe" class="doc_header"><code>class</code> <code>Pipe</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L95" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Pipe</code>(<strong><code>on_question</code></strong>=<em><code>None</code></em>, <strong><code>on_answer</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Base class for all flow element classes
 Sets up key, None as next link and callbacks for question and answer call</p>
@@ -495,7 +506,7 @@ Sets up key, None as next link and callbacks for question and answer call</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Segment" class="doc_header"><code>class</code> <code>Segment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L101" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Segment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="Segment" class="doc_header"><code>class</code> <code>Segment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L128" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Segment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Basic segment unit, asks one question and gives one answer
 Stores response as it is in 'data' field</p>
@@ -528,7 +539,7 @@ Stores response as it is in 'data' field</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ValidatedSegment" class="doc_header"><code>class</code> <code>ValidatedSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L124" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ValidatedSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong><code>errmsg</code></strong>, <strong><code>valid_fn</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
+<h2 id="ValidatedSegment" class="doc_header"><code>class</code> <code>ValidatedSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L159" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ValidatedSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong><code>errmsg</code></strong>, <strong><code>valid_fn</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
 </blockquote>
 <p>Segment element with data validation facility
 Constructor takes validation function as arg.</p>
@@ -561,7 +572,7 @@ Constructor takes validation function as arg.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="MultiChoiceSegment" class="doc_header"><code>class</code> <code>MultiChoiceSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L148" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>MultiChoiceSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>resp_lst</code></strong>, <strong><code>ans</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
+<h2 id="MultiChoiceSegment" class="doc_header"><code>class</code> <code>MultiChoiceSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L188" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>MultiChoiceSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>resp_lst</code></strong>, <strong><code>ans</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
 </blockquote>
 <p>Element for asking question with multi choice answers.
 Both response number and corresponding answer is stored in data</p>
@@ -594,7 +605,7 @@ Both response number and corresponding answer is stored in data</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ComputeSegment" class="doc_header"><code>class</code> <code>ComputeSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L176" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComputeSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
+<h2 id="ComputeSegment" class="doc_header"><code>class</code> <code>ComputeSegment</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L223" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComputeSegment</code>(<strong><code>key</code></strong>, <strong><code>q</code></strong>, <strong><code>a</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Segment"><code>Segment</code></a></p>
 </blockquote>
 <p>Segment to do computation. Data of parent elememnt is passed to answer function
 Should be inherited with overriden answer function to do actual computations</p>
@@ -627,7 +638,7 @@ Should be inherited with overriden answer function to do actual computations</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Composite" class="doc_header"><code>class</code> <code>Composite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L188" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Composite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="Composite" class="doc_header"><code>class</code> <code>Composite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L235" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Composite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Composite element, can have any other element including composite as children.
 All children form linked list and traversed sequentially while this element
@@ -662,7 +673,7 @@ When end of linked list is reached, element returns NEXT</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LoopComposite" class="doc_header"><code>class</code> <code>LoopComposite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L276" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LoopComposite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a></p>
+<h2 id="LoopComposite" class="doc_header"><code>class</code> <code>LoopComposite</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L323" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LoopComposite</code>(<strong><code>key</code></strong>, <strong>*<code>args</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Composite"><code>Composite</code></a></p>
 </blockquote>
 <p>Composite element with ability to start from begin once end is reached.
 Should have a Skip element before to break loop</p>
@@ -695,7 +706,7 @@ Should have a Skip element before to break loop</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TextAdapter" class="doc_header"><code>class</code> <code>TextAdapter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L294" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TextAdapter</code>(<strong><code>root</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="TextAdapter" class="doc_header"><code>class</code> <code>TextAdapter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L341" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TextAdapter</code>(<strong><code>root</code></strong>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Text based adapter to invoke root element on user reponse.
 A similar adapter is needed for HTML or other bots</p>
@@ -734,7 +745,7 @@ A similar adapter is needed for HTML or other bots</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Splitter" class="doc_header"><code>class</code> <code>Splitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L326" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Splitter</code>(<strong><code>key</code></strong>, <strong>*<code>branches</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
+<h2 id="Splitter" class="doc_header"><code>class</code> <code>Splitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L373" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Splitter</code>(<strong><code>key</code></strong>, <strong>*<code>branches</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Pipe"><code>Pipe</code></a></p>
 </blockquote>
 <p>Splitter element to branch flow based on some condition.</p>
 
@@ -766,7 +777,7 @@ A similar adapter is needed for HTML or other bots</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SkipSplitter" class="doc_header"><code>class</code> <code>SkipSplitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L388" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SkipSplitter</code>(<strong><code>key</code></strong>, <strong><code>branch</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a></p>
+<h2 id="SkipSplitter" class="doc_header"><code>class</code> <code>SkipSplitter</code><a href="https://github.com/kulkarniniraj/flowchatbot/tree/master/flowchatbot/flowchatbot.py#L435" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SkipSplitter</code>(<strong><code>key</code></strong>, <strong><code>branch</code></strong>, <strong><code>decider_fn</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>default</code></strong>=<em><code>0</code></em>) :: <a href="/flowchatbot/multiprocess-bot.html#Splitter"><code>Splitter</code></a></p>
 </blockquote>
 <p>A branch is taken on condition otherwise skips the branch
 (name taken from skipconnection in resnets)</p>
